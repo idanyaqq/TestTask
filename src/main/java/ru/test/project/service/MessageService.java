@@ -8,5 +8,5 @@ import ru.test.project.domain.Message;
 @JsonRpcService("/message")
 public interface MessageService {
 
-    String read(@JsonRpcParam("data") Message value);
+    String readMessage(@JsonRpcParam("data") Message value);
 }
