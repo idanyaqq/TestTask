@@ -17,10 +17,23 @@ public class MessageServiceImpl implements MessageService {
 
     private static List<Message> messages = new CopyOnWriteArrayList<>();
 
-    public String readMessage(Message value) {
-        messages.add(value);
+    /**
+     * This method receive a message and add it to the List<Message>
+     * After every message method return empty string
+     * After 100k successfully received messages method return Map with aggregated data by idLocation
+     * ,idDetected with counting the last and clearing the List with messages.
+     *
+     * @param message
+     * @return map with aggregated data by
+     */
+
+    public String readMessage(Message message) {
+        messages.add(message);
         if (messages.size() == 100000) {
-            Map<String, Map<String, Long>> aggregated = messages.parallelStream().collect(groupingBy(Message::getIdLocation, groupingBy(Message::getIdDetected, counting())));
+            Map<String, Map<String, Long>> aggregated = messages.parallelStream()
+                    .collect(
+                            groupingBy(Message::getIdLocation,
+                                    groupingBy(Message::getIdDetected, counting())));
             messages.clear();
             return aggregated.toString();
         }
