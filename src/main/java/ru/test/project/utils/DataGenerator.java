@@ -28,7 +28,7 @@ public class DataGenerator {
         StringBuilder builder = new StringBuilder();
 
 
-        for (int i = 0; i < ROWS_AMOUNT; i++) {
+        for (int i = 0; i < ROWS_AMOUNT-1; i++) {
             //Random faker library from google
             Faker faker = new Faker();
             String template = "{\"jsonrpc\": \"2.0\"," +
