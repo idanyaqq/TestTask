@@ -19,12 +19,12 @@ public class MessageServiceImpl implements MessageService {
 
     /**
      * This method receive a message and add it to the List<Message>
-     * After every message method return empty string
-     * After 100k successfully received messages method return Map with aggregated data by idLocation
+     * After every message method returns empty string
+     * After 100k successfully received messages method returns String of aggregated data by idLocation
      * ,idDetected with counting the last and clearing the List with messages.
      *
      * @param message
-     * @return map with aggregated data by
+     * @return String of aggregated data
      */
 
     public String readMessage(Message message) {
